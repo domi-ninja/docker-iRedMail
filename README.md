@@ -18,12 +18,12 @@ Procedure:
    with debian:jessie, and that requires us to run the image privileged.
 
 	 docker run --privileged -ti \
-          --name <iRedMail container name> \
+                --name <iRedMail container name> \
 	        -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
-          -v /var/vmail:/var/vmail \
-          -p 25:25 -p 465:465 -p 587:587 \
-          -p 110:110 -p 143:143 -p 993:993 -p 995:995 \
-          -p 80:80 -p 443:4433 \
+                -v /var/vmail:/var/vmail \
+                -p 25:25 -p 465:465 -p 587:587 \
+                -p 110:110 -p 143:143 -p 993:993 -p 995:995 \
+                -p 80:80 -p 443:4433 \
 	        <iRedMail image name>
 
    Here we indicate what ports will be exposed and where mail will be stored
