@@ -59,7 +59,7 @@ You now have an iRedMail container ready to go! You can start it up and and admi
 
 Conversely, if you have a stopped container of that image, you can restart it via:
 
-    docker start -i <iRedMail container name>>
+    docker start -i <iRedMail container name>
 
 It is ready for you to connect to it via port 80 or 443 to administer like any other iRedMail server.
 
