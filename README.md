@@ -1,7 +1,7 @@
 # docker-iRedMail
 Dockerized version of iRedMail that uses systemd to actually make iRedMail services work.
 
-    This allows one to run iRedMail inside a container. This is useful as
+   This allows one to run iRedMail inside a container. This is useful as
 iRedMail really wants to be installed on a virgin O/S install and does not
 play well with other software, even if installed later. I kmow: I've tried.
 It does not end well.
