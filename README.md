@@ -17,7 +17,7 @@ Procedure:
    we need something that it understands to do this, like systemd, packaged
    with debian:jessie, and that requires us to run the image privileged.
 
-    docker run --privileged -ti \
+   docker run --privileged -ti \
         --name <iRedMail container name> \
 	-v /sys/fs/cgroup:/sys/fs/cgroup:ro \
         -v /var/vmail:/var/vmail \
