@@ -15,7 +15,7 @@ Procedure:
    with debian:jessie, and that requires us to run the image privileged.
 
     docker run --privileged -ti \  
-        --name &lt;iRedMail container name&gt;> \  
+        --name &lt;iRedMail container name&gt; \  
 	-v /sys/fs/cgroup:/sys/fs/cgroup:ro \  
         -v /var/vmail:/var/vmail \  
         -p 25:25 -p 465:465 -p 587:587 \  
