@@ -119,9 +119,9 @@ rm -f /lib/systemd/system/basic.target.wants/*;\
 rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 RUN \
-    wget https://bitbucket.org/zhb/iredmail/downloads/iRedMail-0.9.5-1.tar.bz2;\
-    tar -jxvf iRedMail-0.9.5-1.tar.bz2; \
-    chmod +x iRedMail-0.9.5-1/iRedMail.sh; \
+    wget https://bitbucket.org/zhb/iredmail/downloads/iRedMail-0.9.6.tar.bz2;\
+    tar -jxvf iRedMail-0.9.6.tar.bz2; \
+    chmod +x iRedMail-0.9.6/iRedMail.sh; \
     systemctl set-default multi-user.target
 
 # Install systemd oneshot startup script to configure iRedMail on first start.
