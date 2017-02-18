@@ -7,7 +7,7 @@ Procedure:
 
 1. Build this Docker file into an image:
 
-    docker build . -t <iRedMail image name>
+    docker build . -t &lt;iRedMail image name&gt;
 
 2. Run the image the first time to get iRedMail installed in it and configured
    Sadly, since iRedMail depends on proper service start/stop management,
@@ -37,29 +37,29 @@ The iRedMail installation and configuratuion is ready when you see:
 
 3) Start a shell session from another terminal in the newly created container and shut it down:
 
-    docker exec -it <container name> bash
+    docker exec -it &lt;container name&gt; bash
     shutdown now
 
 You now have an iRedMail container ready to go! You can start it up and and administer it the way you usually would: All the required ports are exposed from the container, and you just have to point your browser at it's network address when you start it up. Ensure that the mail server hostname you provided to it resolves to it. (For local testing, just add it to /etc/hosts in your host machine).
 
 4) If you wish to commit the configured container to an image snapshot simply execute:
 
-    docker commit <container name> <iRedMail image name>
+    docker commit &ltcontainer name&gt; &lt;iRedMail image name&gt;
 
 5) You can run this image via
 
     docker run --privileged -ti \  
-        --name <iRedMail container name> \  
+        --name &lt;RedMail container name&gt; \  
         -v /sys/fs/cgroup:/sys/fs/cgroup:ro \  
         -v /var/vmail:/var/vmail \  
         -p 25:25 -p 465:465 -p 587:587 \  
         -p 110:110 -p 143:143 -p 993:993 -p 995:995 \  
         -p 80:80 -p 443:4433 \  
-        <iRedMail image name>
+        &lt;iRedMail image name&gt;
 
 Conversely, if you have a stopped container of that image, you can restart it via:
 
-    docker start -i <iRedMail container name>
+    docker start -i &lt;iRedMail container name&gt;
 
 It is ready for you to connect to it via port 80 or 443 to administer like any other iRedMail server.
 
