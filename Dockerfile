@@ -108,8 +108,8 @@ ENV container docker
 ENV LC_ALL C
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update; apt-get install -y apt-utils wget bzip2
-RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
+RUN apt-get update; apt-get install -y apt-utils wget bzip2 netcat
+RUN (cd /lib/systemd/system/sysinit.target.wants/; ls -l; for i in *; do [ "$i" = "systemd-tmpfiles-setup.service" ] || rm -f $i; done; ls -l); \
 rm -f /lib/systemd/system/multi-user.target.wants/*;\
 rm -f /etc/systemd/system/*.wants/*;\
 rm -f /lib/systemd/system/local-fs.target.wants/*; \
@@ -119,9 +119,10 @@ rm -f /lib/systemd/system/basic.target.wants/*;\
 rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 RUN \
-    wget https://bitbucket.org/zhb/iredmail/downloads/iRedMail-0.9.6.tar.bz2;\
-    tar -jxvf iRedMail-0.9.6.tar.bz2; \
-    chmod +x iRedMail-0.9.6/iRedMail.sh; \
+    wget -U "Wget/1.18 (linux-gnu)" \
+        https://bitbucket.org/zhb/iredmail/downloads/iRedMail-0.9.7.tar.bz2;\
+    tar -jxvf iRedMail-0.9.7.tar.bz2; \
+    chmod +x iRedMail-0.9.7/iRedMail.sh; \
     systemctl set-default multi-user.target
 
 # Install systemd oneshot startup script to configure iRedMail on first start.
@@ -140,3 +141,4 @@ ENV init /lib/systemd/systemd
 VOLUME [ "/sys/fs/cgroup" ]
 VOLUME [ "/var/vmail" ]
 ENTRYPOINT ["/lib/systemd/systemd"]
+

@@ -20,7 +20,7 @@ Procedure:
         -v /var/vmail:/var/vmail \  
         -p 25:25 -p 465:465 -p 587:587 \  
         -p 110:110 -p 143:143 -p 993:993 -p 995:995 \  
-        -p 80:80 -p 443:4433 \  
+        -p 80:80 -p 443:443 \  
 	&lt;iRedMail image name&gt;
 
 Here we indicate what ports will be exposed and where mail will be stored (/var/vmail) on the host. If you wish, it can stay stored in the container by omitting the related -v clause.
@@ -37,14 +37,13 @@ The iRedMail installation and configuratuion is ready when you see:
 
 3) Start a shell session from another terminal in the newly created container and shut it down:
 
-    docker exec -it &lt;container name&gt; bash
-    shutdown now
+    docker exec -it &lt;container name&gt; shutdown now
 
 You now have an iRedMail container ready to go! You can start it up and and administer it the way you usually would: All the required ports are exposed from the container, and you just have to point your browser at it's network address when you start it up. Ensure that the mail server hostname you provided to it resolves to it. (For local testing, just add it to /etc/hosts in your host machine).
 
 4) If you wish to commit the configured container to an image snapshot simply execute:
 
-    docker commit &ltcontainer name&gt; &lt;iRedMail image name&gt;
+    docker commit &lt;container name&gt; &lt;iRedMail image name&gt;
 
 5) You can run this image via
 
