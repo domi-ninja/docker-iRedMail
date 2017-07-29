@@ -118,10 +118,9 @@ rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
 rm -f /lib/systemd/system/basic.target.wants/*;\
 rm -f /lib/systemd/system/anaconda.target.wants/*;
 
+ADD https://bitbucket.org/zhb/iredmail/downloads/iRedMail-0.9.7.tar.bz2 /
+
 RUN \
-    wget -U "Wget/1.18 (linux-gnu)" \
-        https://bitbucket.org/zhb/iredmail/downloads/iRedMail-0.9.7.tar.bz2;\
-    tar -jxvf iRedMail-0.9.7.tar.bz2; \
     chmod +x iRedMail-0.9.7/iRedMail.sh; \
     systemctl set-default multi-user.target
 
