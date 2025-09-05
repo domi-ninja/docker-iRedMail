@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   iredmail:
     container_name: iredmail

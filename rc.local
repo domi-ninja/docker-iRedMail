@@ -2,7 +2,7 @@
 # wait for systemd spew to end
 sleep 1
 read -p "Enter Mail Server Host Name --> " mail_host
-cd /iRedMail-0.9.7
+cd /iRedMail
 IREDMAIL_HOSTNAME=$mail_host ./iRedMail.sh
 # make one shot by making non-executible 
 chmod -x /etc/rc.local
