@@ -101,14 +101,21 @@
 # so one has an image to revert to if their gets corrupted.
 #
 
-FROM debian:jessie
+FROM debian:bullseye
 MAINTAINER "Rene S. Hollan" <rene@hollan.org>
 
 ENV container docker
 ENV LC_ALL C
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update; apt-get install -y apt-utils wget bzip2 netcat
+RUN apt-get update && apt-get install -y \
+    systemd \
+    systemd-sysv \
+    apt-utils \
+    wget \
+    bzip2 \
+    netcat \
+    && rm -rf /var/lib/apt/lists/*
 RUN (cd /lib/systemd/system/sysinit.target.wants/; ls -l; for i in *; do [ "$i" = "systemd-tmpfiles-setup.service" ] || rm -f $i; done; ls -l); \
 rm -f /lib/systemd/system/multi-user.target.wants/*;\
 rm -f /etc/systemd/system/*.wants/*;\
