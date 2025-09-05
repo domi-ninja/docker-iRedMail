@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  iredmail:
+    container_name: iredmail
+    image: iredmail:latest
+    build:
+      context: .
+    privileged: true
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+    stop_grace_period: 90s
+    ports:
+      - "25:25"
+      - "465:465"
+      - "587:587"
+      - "110:110"
+      - "143:143"
+      - "993:993"
+      - "995:995"
+    expose:
+      - "80"
+      - "443"
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /var/vmail:/var/vmail
+    tmpfs:
+      - /run
+      - /run/lock
+
+volumes:
+  # Optional: use a named volume instead of host bind mount by replacing
+  # /var/vmail:/var/vmail with vmail-data:/var/vmail above.
+  vmail-data:
+
+
